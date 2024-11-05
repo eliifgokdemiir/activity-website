@@ -3,8 +3,8 @@ import { Activity } from '../../../models/activity';
 import { NgStyle, CurrencyPipe } from '@angular/common';
 
 @Component({
-    selector: '[nft-single-card]',
-    templateUrl: './nft-single-card.component.html',
+    selector: '[activity-single-card]',
+    templateUrl: './activity-single-card.component.html',
     standalone: true,
     imports: [NgStyle, CurrencyPipe],
 })

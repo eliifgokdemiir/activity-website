@@ -7,8 +7,8 @@ import { ActivityDualCardComponent } from '../../components/activity/activity-du
 import { ActivityHeaderComponent } from '../../components/activity/activity-header/activity-header.component';
 
 @Component({
-    selector: 'app-nft',
-    templateUrl: './nft.component.html',
+    selector: 'app-activity',
+    templateUrl: './activity.component.html',
     standalone: true,
     imports: [
       ActivityHeaderComponent,

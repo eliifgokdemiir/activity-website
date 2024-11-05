@@ -4,8 +4,8 @@ import { ActivityAuctionsTableItemComponent } from '../activity-auctions-table-i
 import { NgFor } from '@angular/common';
 
 @Component({
-    selector: '[nft-auctions-table]',
-    templateUrl: './nft-auctions-table.component.html',
+    selector: '[activity-auctions-table]',
+    templateUrl: './activity-auctions-table.component.html',
     standalone: true,
     imports: [NgFor, ActivityAuctionsTableItemComponent],
 })

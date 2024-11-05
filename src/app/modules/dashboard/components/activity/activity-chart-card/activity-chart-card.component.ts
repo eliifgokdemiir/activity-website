@@ -6,8 +6,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @Component({
-  selector: '[nft-chart-card]',
-  templateUrl: './nft-chart-card.component.html',
+  selector: '[activity-chart-card]',
+  templateUrl: './activity-chart-card.component.html',
   standalone: true,
   imports: [AngularSvgIconModule, NgApexchartsModule],
 })

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-nft-header',
-    templateUrl: './nft-header.component.html',
+    selector: 'app-activity-header',
+    templateUrl: './activity-header.component.html',
     standalone: true,
 })
 export class ActivityHeaderComponent implements OnInit {

@@ -4,8 +4,8 @@ import { CurrencyPipe } from '@angular/common';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @Component({
-    selector: '[nft-auctions-table-item]',
-    templateUrl: './nft-auctions-table-item.component.html',
+    selector: '[activity-auctions-table-item]',
+    templateUrl: './activity-auctions-table-item.component.html',
     standalone: true,
     imports: [AngularSvgIconModule, CurrencyPipe],
 })
