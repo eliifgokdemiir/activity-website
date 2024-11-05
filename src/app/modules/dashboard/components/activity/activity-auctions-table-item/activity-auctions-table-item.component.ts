@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Nft } from '../../../models/nft';
+import { Activity } from '../../../models/activity';
 import { CurrencyPipe } from '@angular/common';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
@@ -9,8 +9,8 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     standalone: true,
     imports: [AngularSvgIconModule, CurrencyPipe],
 })
-export class NftAuctionsTableItemComponent implements OnInit {
-  @Input() auction = <Nft>{};
+export class ActivityAuctionsTableItemComponent implements OnInit {
+  @Input() auction = <Activity>{};
 
   constructor() {}
 

@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NftHeaderComponent } from './nft-header.component';
+import { ActivityDualCardComponent } from './activity-dual-card.component';
 
-describe('NftHeaderComponent', () => {
-  let component: NftHeaderComponent;
-  let fixture: ComponentFixture<NftHeaderComponent>;
+describe('BiddingDualCardComponent', () => {
+  let component: ActivityDualCardComponent;
+  let fixture: ComponentFixture<ActivityDualCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [NftHeaderComponent],
+    imports: [ActivityDualCardComponent],
 }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NftHeaderComponent);
+    fixture = TestBed.createComponent(ActivityDualCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

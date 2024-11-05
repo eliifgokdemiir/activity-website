@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NftAuctionsTableItemComponent } from './nft-auctions-table-item.component';
+import { ActivityAuctionsTableItemComponent } from './activity-auctions-table-item.component';
 
 describe('NftAuctionsTableItemComponent', () => {
-  let component: NftAuctionsTableItemComponent;
-  let fixture: ComponentFixture<NftAuctionsTableItemComponent>;
+  let component: ActivityAuctionsTableItemComponent;
+  let fixture: ComponentFixture<ActivityAuctionsTableItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [NftAuctionsTableItemComponent],
+    imports: [ActivityAuctionsTableItemComponent],
 }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NftAuctionsTableItemComponent);
+    fixture = TestBed.createComponent(ActivityAuctionsTableItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

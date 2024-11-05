@@ -11,7 +11,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
   standalone: true,
   imports: [AngularSvgIconModule, NgApexchartsModule],
 })
-export class NftChartCardComponent implements OnInit, OnDestroy {
+export class ActivityChartCardComponent implements OnInit, OnDestroy {
   public chartOptions: Partial<ChartOptions>;
 
   constructor(private themeService: ThemeService) {

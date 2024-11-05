@@ -1,4 +1,4 @@
-export interface Nft {
+export interface Activity {
   id: number;
   title: string;
   last_bid?: number;
@@ -6,7 +6,7 @@ export interface Nft {
   creator?: string;
   avatar?: string;
   instant_price?: number;
-  ending_in?: string;
+  date?: string;
   location?: string;
   image: string;
 }

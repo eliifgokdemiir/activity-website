@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Nft } from '../../../models/nft';
+import { Activity } from '../../../models/activity';
 import { NgStyle, CurrencyPipe } from '@angular/common';
 
 @Component({
@@ -8,8 +8,8 @@ import { NgStyle, CurrencyPipe } from '@angular/common';
     standalone: true,
     imports: [NgStyle, CurrencyPipe],
 })
-export class NftDualCardComponent implements OnInit {
-  @Input() nft: Nft = <Nft>{};
+export class ActivityDualCardComponent implements OnInit {
+  @Input() nft: Activity = <Activity>{};
 
   constructor() {}
 

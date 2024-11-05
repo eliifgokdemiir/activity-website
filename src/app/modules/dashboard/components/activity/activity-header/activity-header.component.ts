@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './nft-header.component.html',
     standalone: true,
 })
-export class NftHeaderComponent implements OnInit {
+export class ActivityHeaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}

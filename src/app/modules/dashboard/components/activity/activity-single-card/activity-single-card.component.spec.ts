@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NftChartCardComponent } from './nft-chart-card.component';
+import { ActivitySingleCardComponent } from './activity-single-card.component';
 
-describe('NftChartCardComponent', () => {
-  let component: NftChartCardComponent;
-  let fixture: ComponentFixture<NftChartCardComponent>;
+describe('NftSingleCardComponent', () => {
+  let component: ActivitySingleCardComponent;
+  let fixture: ComponentFixture<ActivitySingleCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [NftChartCardComponent],
+    imports: [ActivitySingleCardComponent],
 }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NftChartCardComponent);
+    fixture = TestBed.createComponent(ActivitySingleCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
