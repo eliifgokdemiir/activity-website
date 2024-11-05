@@ -25,12 +25,13 @@ export class NftComponent implements OnInit {
     this.nft = [
       {
         id: 34356771,
-        title: 'Girls of the Cartoon Universe',
-        creator: 'Jhon Doe',
-        instant_price: 4.2,
+        title: 'TARKAN KONSERİ',
+        creator: 'Tarkan',
+        instant_price: 187.47,
         price: 187.47,
-        ending_in: '06h 52m 47s',
+        ending_in: '09.09.2024',
         last_bid: 0.12,
+        location: 'ODTÜ Vişnelik',
         image: './assets/images/img-01.jpg',
         avatar: './assets/avatars/avt-01.jpg',
       },
@@ -39,6 +40,7 @@ export class NftComponent implements OnInit {
         title: 'Pupaks',
         price: 548.79,
         last_bid: 0.35,
+        location: 'Jolly Joker',
         image: './assets/images/img-02.jpg',
       },
       {
@@ -46,6 +48,7 @@ export class NftComponent implements OnInit {
         title: 'Seeing Green collection',
         price: 234.88,
         last_bid: 0.15,
+        location: '6:45',
         image: './assets/images/img-03.jpg',
       },
     ];

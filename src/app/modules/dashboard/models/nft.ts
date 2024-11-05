@@ -7,5 +7,6 @@ export interface Nft {
   avatar?: string;
   instant_price?: number;
   ending_in?: string;
+  location?: string;
   image: string;
 }
