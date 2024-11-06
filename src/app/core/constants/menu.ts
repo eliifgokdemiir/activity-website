@@ -3,88 +3,83 @@ import { MenuItem } from '../models/menu.model';
 export class Menu {
   public static pages: MenuItem[] = [
     {
-      group: 'Base',
+      group: '',
       separator: false,
       items: [
         {
           icon: 'assets/icons/heroicons/outline/chart-pie.svg',
-          label: 'Dashboard',
-          route: '/dashboard',
-          children: [
-            { label: 'Nfts', route: '/dashboard/nfts' },
-            // { label: 'Podcast', route: '/dashboard/podcast' },
-          ],
+          label: 'Anasayfa',
+          route: '/dashboard/nfts',
         },
-        {
-          icon: 'assets/icons/heroicons/outline/lock-closed.svg',
-          label: 'Auth',
-          route: '/auth',
-          children: [
-            { label: 'Sign up', route: '/auth/sign-up' },
-            { label: 'Sign in', route: '/auth/sign-in' },
-            { label: 'Forgot Password', route: '/auth/forgot-password' },
-            { label: 'New Password', route: '/auth/new-password' },
-            { label: 'Two Steps', route: '/auth/two-steps' },
-          ],
-        },
-        {
-          icon: 'assets/icons/heroicons/outline/exclamation-triangle.svg',
-          label: 'Errors',
-          route: '/errors',
-          children: [
-            { label: '404', route: '/errors/404' },
-            { label: '500', route: '/errors/500' },
-          ],
-        },
-        {
-          icon: 'assets/icons/heroicons/outline/cube.svg',
-          label: 'Components',
-          route: '/components',
-          children: [{ label: 'Table', route: '/components/table' }],
-        },
+        // {
+        //   icon: 'assets/icons/heroicons/outline/lock-closed.svg',
+        //   label: 'Auth',
+        //   route: '/auth',
+        //   children: [
+        //     { label: 'Sign up', route: '/auth/sign-up' },
+        //     { label: 'Sign in', route: '/auth/sign-in' },
+        //     { label: 'Forgot Password', route: '/auth/forgot-password' },
+        //     { label: 'New Password', route: '/auth/new-password' },
+        //     { label: 'Two Steps', route: '/auth/two-steps' },
+        //   ],
+        // },
+        // {
+        //   icon: 'assets/icons/heroicons/outline/exclamation-triangle.svg',
+        //   label: 'Errors',
+        //   route: '/errors',
+        //   children: [
+        //     { label: '404', route: '/errors/404' },
+        //     { label: '500', route: '/errors/500' },
+        //   ],
+        // },
+        // {
+        //   icon: 'assets/icons/heroicons/outline/cube.svg',
+        //   label: 'Components',
+        //   route: '/components',
+        //   children: [{ label: 'Table', route: '/components/table' }],
+        // },
       ],
     },
     {
-      group: 'Collaboration',
+      group: '',
       separator: true,
       items: [
         {
           icon: 'assets/icons/heroicons/outline/download.svg',
-          label: 'Download',
+          label: 'Konser',
           route: '/download',
         },
         {
           icon: 'assets/icons/heroicons/outline/gift.svg',
-          label: 'Gift Card',
+          label: 'Tiyatro',
           route: '/gift',
         },
         {
           icon: 'assets/icons/heroicons/outline/users.svg',
-          label: 'Users',
+          label: 'Müzikal',
           route: '/users',
         },
-      ],
-    },
-    {
-      group: 'Config',
-      separator: false,
-      items: [
+        {
+          icon: 'assets/icons/heroicons/outline/users.svg',
+          label: 'Stand Up',
+          route: '/users',
+        },
         {
           icon: 'assets/icons/heroicons/outline/cog.svg',
-          label: 'Settings',
+          label: 'Ayarlar',
           route: '/settings',
         },
         {
           icon: 'assets/icons/heroicons/outline/bell.svg',
-          label: 'Notifications',
+          label: 'Bildirimler',
           route: '/gift',
         },
         {
           icon: 'assets/icons/heroicons/outline/folder.svg',
-          label: 'Folders',
+          label: 'Diğer Etkinlikler',
           route: '/folders',
           children: [
-            { label: 'Current Files', route: '/folders/current-files' },
+            { label: 'Festival', route: '/folders/current-files' },
             { label: 'Downloads', route: '/folders/download' },
             { label: 'Trash', route: '/folders/trash' },
           ],
