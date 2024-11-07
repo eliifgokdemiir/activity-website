@@ -9,7 +9,7 @@ import { NgStyle, CurrencyPipe } from '@angular/common';
     imports: [NgStyle, CurrencyPipe],
 })
 export class ActivitySingleCardComponent implements OnInit {
-  @Input() nft: Activity = <Activity>{};
+  @Input() activity: Activity = <Activity>{};
 
   constructor() {}
 

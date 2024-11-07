@@ -19,10 +19,10 @@ import { ActivityHeaderComponent } from '../../components/activity/activity-head
     ],
 })
 export class ActivityComponent implements OnInit {
-  nft: Array<Activity>;
+  activity: Array<Activity>;
 
   constructor() {
-    this.nft = [
+    this.activity = [
       {
         id: 34356771,
         title: 'TARKAN KONSERİ',
@@ -30,8 +30,8 @@ export class ActivityComponent implements OnInit {
         instant_price: 187.47,
         price: 187.47,
         date: '09.09.2024',
-        last_bid: 0.12,
         location: 'ODTÜ Vişnelik',
+        time: '21.00',
         image: './assets/images/img-01.jpg',
         avatar: './assets/avatars/avt-01.jpg',
       },
@@ -40,8 +40,8 @@ export class ActivityComponent implements OnInit {
         title: 'Happy Halloween',
         price: 548.79,
         date: '09.09.2024',
-        last_bid: 0.35,
         location: 'Jolly Joker',
+        time: '21.00',
         image: './assets/images/img-02.jpg',
       },
       {
@@ -49,8 +49,8 @@ export class ActivityComponent implements OnInit {
         title: 'Perdenin Ardındakiler',
         price: 234.88,
         date: '09.09.2024',
-        last_bid: 0.15,
         location: '6:45',
+        time: '21.00',
         image: './assets/images/img-03.jpg',
       },
     ];

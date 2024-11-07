@@ -69,7 +69,7 @@ export class ActivityChartCardComponent implements OnInit, OnDestroy {
         curve: 'smooth',
         show: true,
         width: 3,
-        colors: [baseColor], // line color
+        colors: [baseColor], 
       },
       xaxis: {
         categories: categories,
