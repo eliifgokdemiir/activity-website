@@ -9,7 +9,7 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/home.svg', 
           label: 'Anasayfa',
-          route: '/activity',
+          route: '/anasayfa/etkinlikler',
         },
         {
           icon: 'assets/icons/heroicons/outline/music-note.svg', 
@@ -39,11 +39,11 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/plus-circle.svg', 
           label: 'Kendi Etkinliğini Oluştur!',
-          route: '/folders',
-          children: [
-            { label: 'Kurumsal Etkinlik Oluştur', route: '/folders/current-files' },
-            { label: 'Bireysel Etkinlik Oluştur', route: '/folders/download' },
-          ],
+          route: '/etkinlik-olustur',
+          // children: [
+          //   { label: 'Kurumsal Etkinlik Oluştur', route: '/etkinlik-olustur' },
+          //   { label: 'Bireysel Etkinlik Oluştur', route: '/etkinlik-olustur' },
+          // ],
         },
         {
           icon: 'assets/icons/heroicons/outline/bell.svg', 

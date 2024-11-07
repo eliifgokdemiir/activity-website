@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'errors',
     loadChildren: () => import('./modules/error/error.module').then((m) => m.ErrorModule),
   },
+  {
+    path: 'etkinlik-olustur',
+    loadChildren: () => import('./modules/create-event/create-event.module').then((m) => m.CreateEventModule)
+  },
   { path: '**', redirectTo: 'errors/404' },
 ];
 
