@@ -1,0 +1,34 @@
+<div class="flex h-screen w-full overflow-hidden">
+
+    <app-sidebar></app-sidebar>
+    <div class="flex grow flex-col content-start overflow-hidden bg-card ">
+
+      <app-navbar></app-navbar>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-8">
+        <div *ngFor="let musical of musical" class="flex h-[420px] flex-col rounded-lg bg-background p-8">
+          <div
+            [ngStyle]="{ 'background-image': 'url(' + musical.image + ')' }"
+            class="h-[240px] cursor-pointer rounded-md bg-cover transition duration-150 ease-in-out hover:opacity-75">
+          </div>
+
+          <h2 class="text-md mt-6 font-semibold text-foreground">{{ musical.title }}</h2>
+          <div class="dflex items-end justify-between text-sm font-semibold text-muted-foreground">
+            <div class="font-semibold text-foreground">{{ musical.location }}</div>
+            <div class="text-muted-foreground">{{ musical.date }} - {{ musical.time }}</div>
+          </div>
+
+          <div class="mt-6 flex items-center justify-between">
+            <button
+              class="hover:bg-primary-600 flex-none rounded-md bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground">
+              Sepete Ekle
+            </button>
+            <button
+              class="lex-none rounded-md bg-card px-4 py-2.5 text-xs font-semibold text-muted-foreground hover:bg-muted hover:text-foreground">
+              <span>{{ musical.price }} ₺</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

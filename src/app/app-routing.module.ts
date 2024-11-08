@@ -18,6 +18,22 @@ const routes: Routes = [
     path: 'etkinlik-olustur',
     loadChildren: () => import('./modules/create-event/create-event.module').then((m) => m.CreateEventModule)
   },
+  {
+    path: 'konserler',
+    loadChildren: () => import('./modules/concert/concert.module').then((m) => m.ConcertModule)
+  },
+  {
+    path: 'tiyatrolar',
+    loadChildren: () => import('./modules/theatre/theatre.module').then((m) => m.TheatreModule)
+  },
+  {
+    path: 'musicals',
+    loadChildren: () => import('./modules/musical/musical.module').then((m) => m.MusicalModule)
+  },
+  {
+    path: 'notifications',
+    loadChildren: () => import('./modules/notifications/notifications.module').then((m) => m.NotificationsModule)
+  },
   { path: '**', redirectTo: 'errors/404' },
 ];
 

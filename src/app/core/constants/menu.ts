@@ -8,23 +8,23 @@ export class Menu {
       items: [
         {
           icon: 'assets/icons/heroicons/outline/home.svg', 
-          label: 'Anasayfa',
+          label: 'Tüm Etkinlikler',
           route: '/anasayfa/etkinlikler',
         },
         {
           icon: 'assets/icons/heroicons/outline/music-note.svg', 
           label: 'Konser',
-          route: '/activity',
+          route: '/konserler',
         },
         {
           icon: 'assets/icons/heroicons/outline/theater-masks.svg', 
           label: 'Tiyatro',
-          route: '/activity',
+          route: '/tiyatrolar',
         },
         {
           icon: 'assets/icons/heroicons/outline/microphone.svg', 
           label: 'Müzikal',
-          route: '/activity',
+          route: '/musicals',
         },
         {
           icon: 'assets/icons/heroicons/outline/smile.svg', 
@@ -48,7 +48,7 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/bell.svg', 
           label: 'Bildirimler',
-          route: '/gift',
+          route: '/notifications',
         },
         {
           icon: 'assets/icons/heroicons/outline/settings.svg', 
