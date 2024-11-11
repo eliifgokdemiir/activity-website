@@ -5,6 +5,7 @@ import { ActivityChartCardComponent } from '../../components/activity/activity-c
 import { ActivitySingleCardComponent } from '../../components/activity/activity-single-card/activity-single-card.component';
 import { ActivityDualCardComponent } from '../../components/activity/activity-dual-card/activity-dual-card.component';
 import { ActivityHeaderComponent } from '../../components/activity/activity-header/activity-header.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-activity',
@@ -21,7 +22,7 @@ import { ActivityHeaderComponent } from '../../components/activity/activity-head
 export class ActivityComponent implements OnInit {
   activity: Array<Activity>;
 
-  constructor() {
+  constructor(private router: Router) {
     this.activity = [
       {
         id: 34356771,
@@ -56,5 +57,10 @@ export class ActivityComponent implements OnInit {
     ];
   }
 
+
   ngOnInit(): void {}
+
+  goToCategory(category: string) {
+    this.router.navigate([`/etkinlikler/${category}`]);
+  }
 }

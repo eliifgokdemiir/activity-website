@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Activity } from '../models/activity';
@@ -14,7 +13,7 @@ export class DashboardService {
       creator: 'Tarkan',
       instant_price: 187.47,
       price: 187.47,
-      date: '09.09.2024',
+      date: '2024-09-09', // Use ISO format for easier sorting
       location: 'ODTÜ Vişnelik',
       time: '21.00',
       image: './assets/images/img-01.jpg',
@@ -24,7 +23,7 @@ export class DashboardService {
       id: 34356772,
       title: 'Happy Halloween',
       price: 548.79,
-      date: '09.09.2024',
+      date: '2024-10-31',
       location: 'Jolly Joker',
       time: '21.00',
       image: './assets/images/img-02.jpg',
@@ -33,7 +32,7 @@ export class DashboardService {
       id: 34356773,
       title: 'Perdenin Ardındakiler',
       price: 234.88,
-      date: '09.09.2024',
+      date: '2024-11-15',
       location: '6:45',
       time: '21.00',
       image: './assets/images/img-03.jpg',
@@ -43,14 +42,20 @@ export class DashboardService {
   getActivities(city?: string, type?: string): Observable<Activity[]> {
     let filteredActivities = this.activities;
 
+    // Filter by city if specified
     if (city) {
       filteredActivities = filteredActivities.filter(activity => activity.location === city);
     }
 
-    // Filtrelemek istediğiniz etkinlik türüne göre ek filtreleme ekleyebilirsiniz.
+    // Filter by type if specified (e.g., "Konser" or "Stand Up")
     if (type) {
-      filteredActivities = filteredActivities.filter(activity => activity.title.includes(type));
+      filteredActivities = filteredActivities.filter(activity => activity.title.toLowerCase().includes(type.toLowerCase()));
     }
+
+    // Sort activities by date (nearest to farthest)
+    filteredActivities = filteredActivities.sort((a, b) =>
+      new Date(a.date!).getTime() - new Date(b.date!).getTime()
+    );
 
     return of(filteredActivities);
   }

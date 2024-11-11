@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { ActivityComponent } from './pages/activity/activity.component';
+import { EventListComponent } from './pages/activity/event-list/event-list.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,9 @@ const routes: Routes = [
       { path: '**', redirectTo: 'errors/404' },
     ],
   },
+  { path: 'etkinlikler/:category', component: EventListComponent },
+  { path: '', redirectTo: '/etkinlikler/konser', pathMatch: 'full' },
+  
 ];
 
 @NgModule({

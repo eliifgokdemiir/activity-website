@@ -1,26 +1,42 @@
 <div>
-  <!-- Header -->
   <app-activity-header></app-activity-header>
-  <!-- end Header -->
 
+  <div class="flex justify-center gap-4 mb-4 p-4">
+    <div (click)="goToCategory('konser')" class="flex items-center gap-2 p-4 bg-gray-200 rounded-lg hover:bg-gray-300 cursor-pointer transition-transform duration-300 transform hover:scale-105 hover:shadow-lg">
+      <img src="assets/icons/heroicons/outline/music-note.svg" alt="Konser Icon" class="w-6 h-6 text-blue-500" />
+      <span class="font-semibold text-gray-700">Konser</span>
+    </div>
+    <div (click)="goToCategory('tiyatro')" class="flex items-center gap-2 p-4 bg-gray-200 rounded-lg hover:bg-gray-300 cursor-pointer transition-transform duration-300 transform hover:scale-105 hover:shadow-lg">
+      <img src="assets/icons/heroicons/outline/theater-masks.svg" alt="Tiyatro Icon" class="w-6 h-6 text-green-500" />
+      <span class="font-semibold text-gray-700">Tiyatro</span>
+    </div>
+    <div (click)="goToCategory('muzikal')" class="flex items-center gap-2 p-4 bg-gray-200 rounded-lg hover:bg-gray-300 cursor-pointer transition-transform duration-300 transform hover:scale-105 hover:shadow-lg">
+      <img src="assets/icons/heroicons/outline/microphone.svg" alt="Müzikal Icon" class="w-6 h-6 text-purple-500" />
+      <span class="font-semibold text-gray-700">Müzikal</span>
+    </div>
+    <div (click)="goToCategory('standup')" class="flex items-center gap-2 p-4 bg-gray-200 rounded-lg hover:bg-gray-300 cursor-pointer transition-transform duration-300 transform hover:scale-105 hover:shadow-lg">
+      <img src="assets/icons/heroicons/outline/smile.svg" alt="Stand Up Icon" class="w-6 h-6 text-yellow-500" />
+      <span class="font-semibold text-gray-700">Stand Up</span>
+    </div>
+    <div (click)="goToCategory('festival')" class="flex items-center gap-2 p-4 bg-gray-200 rounded-lg hover:bg-gray-300 cursor-pointer transition-transform duration-300 transform hover:scale-105 hover:shadow-lg">
+      <img src="assets/icons/heroicons/outline/festival.svg" alt="Festival Icon" class="w-6 h-6 text-pink-500" />
+      <span class="font-semibold text-gray-700">Festival</span>
+    </div>
+  </div>
+
+
+  <!-- Cards Grid -->
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
-    <!-- Dual Card -->
-    <div activity-dual-card [activity]="activity[0]" class="md:col-span-2"></div>
-    <!-- end Dual Card -->
-    <!-- Single Card -->
+    
+    <div activity-dual-card [activity]="activity[0]" class="md:col-span-2"></div>  
     <div activity-single-card [activity]="activity[1]"></div>
-    <!-- end Single Card -->
-    <!-- Single Card -->
-    <div activity-single-card [activity]="activity[2]"></div>
-    <!-- end Single Card -->
     <div activity-single-card [activity]="activity[2]"></div>
     <div activity-single-card [activity]="activity[2]"></div>
     <div activity-single-card [activity]="activity[2]"></div>
     <div activity-single-card [activity]="activity[2]"></div>
-    <!-- Single Card -->
+    <div activity-single-card [activity]="activity[2]"></div>
+    <!-- Optional Cards -->
     <!-- <div activity-chart-card class="md:col-span-2 xl:col-span-1"></div> -->
-    <!-- end Single Card -->
-    <!-- Auctions Table -->
     <!-- <div activity-auctions-table class="md:col-span-2 xl:col-span-3"></div> -->
   </div>
 </div>
