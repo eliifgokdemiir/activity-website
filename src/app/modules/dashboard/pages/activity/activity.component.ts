@@ -8,6 +8,7 @@ import { ActivityHeaderComponent } from '../../components/activity/activity-head
 import { DashboardService } from '../../services/dashboard.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-activity',
@@ -19,16 +20,30 @@ import { ActivatedRoute, Router } from '@angular/router';
       ActivitySingleCardComponent,
       ActivityChartCardComponent,
       ActivityAuctionsTableComponent,
-      CommonModule
+      CommonModule,
+      FormsModule
     ],
 })
 export class ActivityComponent implements OnInit {
   activities: Activity[] = [];
+  cities: string[] = [
+    'Adana', 'Adıyaman', 'Afyonkarahisar', 'Ağrı', 'Aksaray', 'Amasya', 'Ankara', 'Antalya', 'Ardahan', 'Artvin',
+    'Aydın', 'Balıkesir', 'Bartın', 'Batman', 'Bayburt', 'Bilecik', 'Bingöl', 'Bitlis', 'Bolu', 'Burdur',
+    'Bursa', 'Çanakkale', 'Çankırı', 'Çorum', 'Denizli', 'Diyarbakır', 'Düzce', 'Edirne', 'Elazığ', 'Erzincan',
+    'Erzurum', 'Eskişehir', 'Gaziantep', 'Giresun', 'Gümüşhane', 'Hakkâri', 'Hatay', 'Iğdır', 'Isparta', 'İstanbul',
+    'İzmir', 'Kahramanmaraş', 'Karabük', 'Karaman', 'Kars', 'Kastamonu', 'Kayseri', 'Kilis', 'Kırıkkale', 'Kırklareli',
+    'Kırşehir', 'Kocaeli', 'Konya', 'Kütahya', 'Malatya', 'Manisa', 'Mardin', 'Mersin', 'Muğla', 'Muş',
+    'Nevşehir', 'Niğde', 'Ordu', 'Osmaniye', 'Rize', 'Sakarya', 'Samsun', 'Siirt', 'Sinop', 'Sivas',
+    'Şanlıurfa', 'Şırnak', 'Tekirdağ', 'Tokat', 'Trabzon', 'Tunceli', 'Uşak', 'Van', 'Yalova', 'Yozgat', 'Zonguldak'
+  ];
+  
+  selectedCity: string = ''; 
 
   constructor(private dashboardService: DashboardService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // URL parametresinden type'ı oku ve etkinlikleri yükle
+    this.loadAllActivities();
+    
     this.route.queryParams.subscribe(params => {
       const type = params['type'];
       if (type) {
@@ -36,7 +51,16 @@ export class ActivityComponent implements OnInit {
       }
     });
   }
-
+  filterByCity() {
+    if (!this.selectedCity) {
+      this.loadAllActivities();
+    } else {
+      this.dashboardService.getActivities(this.selectedCity).subscribe((activities) => {
+        this.activities = activities;
+        console.log(`Loaded activities for city ${this.selectedCity}:`, activities);
+      });
+    }
+  }
   goToCategory(type: string) {
     
     this.dashboardService.getActivities(undefined, type).subscribe((activities) => {
@@ -50,6 +74,12 @@ export class ActivityComponent implements OnInit {
     this.dashboardService.getActivities(undefined, type).subscribe((activities) => {
       this.activities = activities;
       console.log(`Loaded activities for type ${type}:`, activities);
+    });
+  }
+  loadAllActivities() {
+    this.dashboardService.getAllActivities().subscribe((activities) => {
+      this.activities = activities;
+      console.log('Loaded all activities:', activities);
     });
   }
 }

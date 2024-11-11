@@ -11,31 +11,31 @@ export class Menu {
           label: 'Tüm Etkinlikler',
           route: '/anasayfa/etkinlikler',
         },
-        {
-          icon: 'assets/icons/heroicons/outline/music-note.svg', 
-          label: 'Konser',
-          route: '/konserler',
-        },
-        {
-          icon: 'assets/icons/heroicons/outline/theater-masks.svg', 
-          label: 'Tiyatro',
-          route: '/tiyatrolar',
-        },
-        {
-          icon: 'assets/icons/heroicons/outline/microphone.svg', 
-          label: 'Müzikal',
-          route: '/musicals',
-        },
-        {
-          icon: 'assets/icons/heroicons/outline/smile.svg', 
-          label: 'Stand Up',
-          route: '/activity',
-        },
-        {
-          icon: 'assets/icons/heroicons/outline/festival.svg', 
-          label: 'Festival',
-          route: '/activity',
-        },
+        // {
+        //   icon: 'assets/icons/heroicons/outline/music-note.svg', 
+        //   label: 'Konser',
+        //   route: '/konserler',
+        // },
+        // {
+        //   icon: 'assets/icons/heroicons/outline/theater-masks.svg', 
+        //   label: 'Tiyatro',
+        //   route: '/tiyatrolar',
+        // },
+        // {
+        //   icon: 'assets/icons/heroicons/outline/microphone.svg', 
+        //   label: 'Müzikal',
+        //   route: '/musicals',
+        // },
+        // {
+        //   icon: 'assets/icons/heroicons/outline/smile.svg', 
+        //   label: 'Stand Up',
+        //   route: '/activity',
+        // },
+        // {
+        //   icon: 'assets/icons/heroicons/outline/festival.svg', 
+        //   label: 'Festival',
+        //   route: '/activity',
+        // },
         {
           icon: 'assets/icons/heroicons/outline/plus-circle.svg', 
           label: 'Kendi Etkinliğini Oluştur!',

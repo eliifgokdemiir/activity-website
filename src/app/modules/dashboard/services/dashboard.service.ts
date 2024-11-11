@@ -48,7 +48,7 @@ export class DashboardService {
       date: '2024-12-01',
       location: 'Devlet Tiyatrosu',
       time: '19.00',
-      image: './assets/images/img-04.jpg',
+      image: './assets/images/img-03.jpg',
     },
     {
       id: 34356775,
@@ -58,7 +58,7 @@ export class DashboardService {
       date: '2024-11-10',
       location: 'Sahne Gösteri Merkezi',
       time: '20.00',
-      image: './assets/images/img-05.jpg',
+      image: './assets/images/img-03.jpg',
     },
     {
       id: 34356776,
@@ -68,9 +68,27 @@ export class DashboardService {
       date: '2024-11-20',
       location: 'Kültür Merkezi',
       time: '20.30',
-      image: './assets/images/img-06.jpg',
-    }
+      image: './assets/images/img-03.jpg',
+    },
+    {
+      id: 34356777,
+      title: 'Dedublüman',
+      type: 'konser', 
+      creator: 'Tarkan',
+      instant_price: 187.47,
+      price: 187.47,
+      date: '2024-09-09',
+      location: 'ODTÜ Vişnelik',
+      time: '21.00',
+      image: './assets/images/img-01.jpg',
+      avatar: './assets/avatars/avt-01.jpg',
+    },
+
   ];
+
+  getAllActivities(): Observable<Activity[]> {
+    return of(this.activities);
+  }
 
   getActivities(city?: string, type?: string): Observable<Activity[]> {
     let filteredActivities = this.activities;

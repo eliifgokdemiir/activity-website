@@ -13,7 +13,7 @@ const routes: Routes = [
         path: 'etkinlikler',
         component: ActivityComponent,
         children: [
-          { path: ':type', component: ActivityComponent }, // `ActivityComponent` altında `type` alt rotası
+          { path: ':type', component: ActivityComponent }, 
         ],
       },
       { path: '**', redirectTo: 'errors/404' }
