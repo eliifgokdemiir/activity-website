@@ -1,9 +1,27 @@
-<div *ngFor="let activity of activities" class="p-4 mb-4 bg-white rounded-lg shadow-lg">
-    <img [src]="activity.image" alt="Activity Image" class="w-full h-48 object-cover rounded-md mb-4">
-    <h3 class="text-lg font-semibold">{{ activity.title }}</h3>
-    <p class="text-gray-600">Location: {{ activity.location }}</p>
-    <p class="text-gray-600">Date: {{ activity.date | date }}</p>
-    <p class="text-gray-600">Time: {{ activity.time }}</p>
-    <p class="text-gray-800 font-semibold">Price: {{ activity.price | currency }}</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div *ngFor="let activity of activities" class="flex h-[420px] flex-col rounded-lg bg-background p-8">
+      <div
+        [ngStyle]="{ 'background-image': 'url(' + activity.image + ')' }"
+        class="h-[240px] cursor-pointer rounded-md bg-cover transition duration-150 ease-in-out hover:opacity-75">
+      </div>
+ 
+      <h2 class="text-md mt-6 font-semibold text-foreground">{{ activity.title }}</h2>
+    
+      <div class="mt-2 text-sm font-semibold text-muted-foreground">
+        <div class="text-foreground">{{ activity.location }}</div>
+        <div class="text-muted-foreground">{{ activity.date | date }} - {{ activity.time }}</div>
+      </div>
+     
+      <div class="mt-6 flex items-center justify-between">
+        <button
+          class="hover:bg-primary-600 flex-none rounded-md bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground">
+          Sepete Ekle
+        </button>
+        <button
+          class="flex-none rounded-md bg-card px-4 py-2.5 text-xs font-semibold text-muted-foreground hover:bg-muted hover:text-foreground">
+          <span>{{ activity.price | currency:'₺':'symbol':'1.2-2' }}</span>
+        </button>
+      </div>
+    </div>
   </div>
   

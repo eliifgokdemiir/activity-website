@@ -5,7 +5,9 @@ import { ActivityChartCardComponent } from '../../components/activity/activity-c
 import { ActivitySingleCardComponent } from '../../components/activity/activity-single-card/activity-single-card.component';
 import { ActivityDualCardComponent } from '../../components/activity/activity-dual-card/activity-dual-card.component';
 import { ActivityHeaderComponent } from '../../components/activity/activity-header/activity-header.component';
-import { Router } from '@angular/router';
+import { DashboardService } from '../../services/dashboard.service';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-activity',
@@ -17,50 +19,37 @@ import { Router } from '@angular/router';
       ActivitySingleCardComponent,
       ActivityChartCardComponent,
       ActivityAuctionsTableComponent,
+      CommonModule
     ],
 })
 export class ActivityComponent implements OnInit {
-  activity: Array<Activity>;
+  activities: Activity[] = [];
 
-  constructor(private router: Router) {
-    this.activity = [
-      {
-        id: 34356771,
-        title: 'TARKAN KONSERİ',
-        creator: 'Tarkan',
-        instant_price: 187.47,
-        price: 187.47,
-        date: '09.09.2024',
-        location: 'ODTÜ Vişnelik',
-        time: '21.00',
-        image: './assets/images/img-01.jpg',
-        avatar: './assets/avatars/avt-01.jpg',
-      },
-      {
-        id: 34356772,
-        title: 'Happy Halloween',
-        price: 548.79,
-        date: '09.09.2024',
-        location: 'Jolly Joker',
-        time: '21.00',
-        image: './assets/images/img-02.jpg',
-      },
-      {
-        id: 34356773,
-        title: 'Perdenin Ardındakiler',
-        price: 234.88,
-        date: '09.09.2024',
-        location: '6:45',
-        time: '21.00',
-        image: './assets/images/img-03.jpg',
-      },
-    ];
+  constructor(private dashboardService: DashboardService, private router: Router, private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    // URL parametresinden type'ı oku ve etkinlikleri yükle
+    this.route.queryParams.subscribe(params => {
+      const type = params['type'];
+      if (type) {
+        this.loadActivities(type);
+      }
+    });
   }
 
+  goToCategory(type: string) {
+    
+    this.dashboardService.getActivities(undefined, type).subscribe((activities) => {
+      this.activities = activities;
+      console.log(`Activities for type ${type}:`, activities);
+    });
 
-  ngOnInit(): void {}
-
-  goToCategory(category: string) {
-    this.router.navigate([`/etkinlikler/${category}`]);
+    this.router.navigate([type], { relativeTo: this.route });
+  }
+  loadActivities(type: string) {
+    this.dashboardService.getActivities(undefined, type).subscribe((activities) => {
+      this.activities = activities;
+      console.log(`Loaded activities for type ${type}:`, activities);
+    });
   }
 }
