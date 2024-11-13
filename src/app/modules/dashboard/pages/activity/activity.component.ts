@@ -26,6 +26,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ActivityComponent implements OnInit {
   activities: Activity[] = [];
+  filteredActivities: Activity[] = [];
   cities: string[] = [
     'Adana', 'Adıyaman', 'Afyonkarahisar', 'Ağrı', 'Aksaray', 'Amasya', 'Ankara', 'Antalya', 'Ardahan', 'Artvin',
     'Aydın', 'Balıkesir', 'Bartın', 'Batman', 'Bayburt', 'Bilecik', 'Bingöl', 'Bitlis', 'Bolu', 'Burdur',
@@ -38,6 +39,7 @@ export class ActivityComponent implements OnInit {
   ];
   
   selectedCity: string = ''; 
+  searchTerm: string = ''; 
 
   constructor(private dashboardService: DashboardService, private router: Router, private route: ActivatedRoute) {}
 
@@ -73,6 +75,7 @@ export class ActivityComponent implements OnInit {
   loadActivities(type: string) {
     this.dashboardService.getActivities(undefined, type).subscribe((activities) => {
       this.activities = activities;
+      this.filteredActivities = activities; 
       console.log(`Loaded activities for type ${type}:`, activities);
     });
   }
@@ -81,5 +84,15 @@ export class ActivityComponent implements OnInit {
       this.activities = activities;
       console.log('Loaded all activities:', activities);
     });
+  }
+  filterBySearch() {
+    this.applySearchFilter();
+  }
+
+  private applySearchFilter() {
+    this.filteredActivities = this.activities.filter(activity =>
+      activity.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      activity.type.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
 }

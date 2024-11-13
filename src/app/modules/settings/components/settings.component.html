@@ -1,0 +1,102 @@
+<div class="flex h-screen w-full overflow-hidden">
+    <app-sidebar></app-sidebar>
+    <div class="flex grow flex-col content-start overflow-hidden bg-gray-920">
+      <app-navbar></app-navbar>
+  
+      <!-- Bildirim Ayarları Container -->
+      <div class="max-w-6xl mx-auto mt-8 p-8 bg-background shadow-md rounded-lg">
+        <h2 class="text-2xl font-semibold text-white mb-6">Bildirim Ayarları</h2>
+  
+        <!-- Kartların Yatay Sıralanması -->
+        <div class="flex flex-wrap gap-6">
+          <!-- E-posta Bildirimleri -->
+          <div class="preference-card p-6 flex-1 min-w-[280px] rounded-lg bg-gray-700 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105">
+            <h3 class="text-lg font-semibold text-white mb-4">E-posta Bildirimleri</h3>
+            <div class="flex space-x-6">
+              <label class="flex items-center space-x-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="email"
+                  [value]="'active'"
+                  [(ngModel)]="emailNotification"
+                  (change)="onPreferenceChange('email', 'active')"
+                  class="text-red-600 focus:ring-red-500"
+                />
+                <span class="text-gray-200">Aktif</span>
+              </label>
+              <label class="flex items-center space-x-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="email"
+                  [value]="'inactive'"
+                  [(ngModel)]="emailNotification"
+                  (change)="onPreferenceChange('email', 'inactive')"
+                  class="text-red-600 focus:ring-red-500"
+                />
+                <span class="text-gray-200">Pasif</span>
+              </label>
+            </div>
+          </div>
+  
+          <!-- SMS Bildirimleri -->
+          <div class="preference-card p-6 flex-1 min-w-[280px] rounded-lg bg-gray-700 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105">
+            <h3 class="text-lg font-semibold text-white mb-4">SMS Bildirimleri</h3>
+            <div class="flex space-x-6">
+              <label class="flex items-center space-x-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="sms"
+                  [value]="'active'"
+                  [(ngModel)]="smsNotification"
+                  (change)="onPreferenceChange('sms', 'active')"
+                  class="text-red-600 focus:ring-red-500"
+                />
+                <span class="text-gray-200">Aktif</span>
+              </label>
+              <label class="flex items-center space-x-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="sms"
+                  [value]="'inactive'"
+                  [(ngModel)]="smsNotification"
+                  (change)="onPreferenceChange('sms', 'inactive')"
+                  class="text-red-600 focus:ring-red-500"
+                />
+                <span class="text-gray-200">Pasif</span>
+              </label>
+            </div>
+          </div>
+  
+          <!-- Uygulama Bildirimleri -->
+          <div class="preference-card p-6 flex-1 min-w-[280px] rounded-lg bg-gray-700 shadow-lg hover:shadow-xl transition-transform transform hover:scale-105">
+            <h3 class="text-lg font-semibold text-white mb-4">Uygulama Bildirimleri</h3>
+            <div class="flex space-x-6">
+              <label class="flex items-center space-x-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="app"
+                  [value]="'active'"
+                  [(ngModel)]="appNotification"
+                  (change)="onPreferenceChange('app', 'active')"
+                  class="text-red-600 focus:ring-red-500"
+                />
+                <span class="text-gray-200">Aktif</span>
+              </label>
+              <label class="flex items-center space-x-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="app"
+                  [value]="'inactive'"
+                  [(ngModel)]="appNotification"
+                  (change)="onPreferenceChange('app', 'inactive')"
+                  class="text-red-600 focus:ring-red-500"
+                />
+                <span class="text-gray-200">Pasif</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -34,6 +34,14 @@ const routes: Routes = [
     path: 'notifications',
     loadChildren: () => import('./modules/notifications/notifications.module').then((m) => m.NotificationsModule)
   },
+  {
+    path: 'settings',
+    loadChildren: () => import('./modules/settings/settings.module').then((m) => m.SettingsModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./modules/profile/profile.module').then((m) => m.ProfileModule)
+  },
   { path: '**', redirectTo: 'errors/404' },
 ];
 

@@ -47,7 +47,7 @@ export class Menu {
         },
         {
           icon: 'assets/icons/heroicons/outline/bell.svg', 
-          label: 'Bildirimler',
+          label: 'Biletlerim',
           route: '/notifications',
         },
         {

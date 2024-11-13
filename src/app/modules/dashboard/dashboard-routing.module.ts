@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     children: [
-      { path: '', redirectTo: 'etkinlikler/konser', pathMatch: 'full' },
+      { path: '', redirectTo: 'etkinlikler', pathMatch: 'full' },
       {
         path: 'etkinlikler',
         component: ActivityComponent,
