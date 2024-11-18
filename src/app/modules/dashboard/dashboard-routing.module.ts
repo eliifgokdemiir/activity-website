@@ -8,21 +8,21 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     children: [
-      { path: '', redirectTo: 'etkinlikler', pathMatch: 'full' },
       {
-        path: 'etkinlikler',
-        component: ActivityComponent,
-        children: [
-          { path: ':type', component: ActivityComponent }, 
-        ],
+        path: '',
+        component: ActivityComponent
       },
-      { path: '**', redirectTo: 'errors/404' }
-    ],
-  },
+      {
+        path: ':type',
+        component: ActivityComponent
+      },
+      
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class DashboardRoutingModule {}
+export class DashboardRoutingModule { }

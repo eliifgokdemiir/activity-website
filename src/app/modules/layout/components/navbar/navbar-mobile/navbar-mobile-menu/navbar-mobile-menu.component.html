@@ -1,4 +1,10 @@
 <div class="pt-4" *ngFor="let menu of menuService.pagesMenu">
+  <div class="flex items-center justify-start sm:order-2 md:mr-10 lg:hidden">
+    <a class="flex items-center justify-center rounded bg-primary p-2 focus:outline-none focus:ring-1">
+      <svg-icon src="assets/icons/logo.svg"> </svg-icon>
+    </a>
+    <b class="pl-3 text-sm font-bold text-foreground"> EtkinBilet </b>
+  </div>
   <div class="mx-1 mb-2 flex items-center justify-between">
     <small class="text-xs font-semibold text-muted-foreground">
       {{ menu.group }}

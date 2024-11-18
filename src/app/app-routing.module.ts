@@ -4,7 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./modules/layout/layout.module').then((m) => m.LayoutModule),
+    redirectTo: 'etkinlikler',
+    pathMatch: 'full'
+  },
+  {
+    path: 'etkinlikler',
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
     path: 'auth',
@@ -13,10 +18,6 @@ const routes: Routes = [
   {
     path: 'errors',
     loadChildren: () => import('./modules/error/error.module').then((m) => m.ErrorModule),
-  },
-  {
-    path: 'etkinlik-olustur',
-    loadChildren: () => import('./modules/create-event/create-event.module').then((m) => m.CreateEventModule)
   },
   {
     path: 'konserler',
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./modules/profile/profile.module').then((m) => m.ProfileModule)
+  },
+  { 
+    path: 'etkinlik-olustur',
+    loadChildren: () => import('./modules/create-event/create-event.module').then(m => m.CreateEventModule)
   },
   { path: '**', redirectTo: 'errors/404' },
 ];

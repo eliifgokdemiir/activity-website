@@ -1,0 +1,302 @@
+<div class="flex h-screen w-full overflow-hidden bg-background">
+ 
+  <div class="flex grow flex-col content-start overflow-hidden bg-background p-4 md:p-6">
+ 
+    <!-- Overflow-y-auto ekledik -->
+    <div class="flex-1 overflow-y-auto">
+      <div class="max-w-4xl mx-auto w-full mt-8 pb-20">
+        <div class="flex items-center gap-2 mb-8">
+          <a 
+            routerLink="../"
+            class="text-muted-foreground hover:text-foreground transition-colors">
+            <img src="assets/icons/heroicons/outline/arrow-left.svg" class="w-5 h-5" alt="Back" />
+          </a>
+          <h2 class="text-2xl font-semibold text-foreground">Kurumsal Etkinlik Oluştur<span class="text-primary">.</span></h2>
+        </div>
+
+        <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="space-y-6">
+          <!-- Görsel Yükleme -->
+          <div class="space-y-2">
+            <label class="text-sm font-medium text-foreground">Etkinlik Görseli</label>
+            <div class="relative border-2 border-dashed border-border rounded-lg p-4 hover:border-primary/50 transition-colors">
+              <input 
+                type="file" 
+                (change)="onFileSelected($event)" 
+                accept="image/*"
+                class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+              />
+              
+              <div class="flex flex-col items-center justify-center gap-2" *ngIf="!previewUrl">
+                <img src="assets/icons/heroicons/outline/cloud-upload.svg" class="w-8 h-8 text-muted-foreground" alt="Upload" />
+                <p class="text-sm text-muted-foreground">Görsel yüklemek için tıklayın veya sürükleyin</p>
+                <p class="text-xs text-muted-foreground">PNG, JPG, GIF (max. 2MB)</p>
+              </div>
+
+              <img 
+                *ngIf="previewUrl" 
+                [src]="previewUrl" 
+                class="max-h-48 mx-auto rounded-lg"
+                alt="Preview"
+              />
+            </div>
+          </div>
+
+          <!-- Şirket Bilgileri -->
+          <div class="bg-card border border-border rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-foreground mb-4">Şirket Bilgileri</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="form__group">
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="companyName"
+                    formControlName="companyName"
+                    class="peer block"
+                    placeholder=" "
+                  />
+                  <label for="companyName" class="floating-label">Şirket Adı</label>
+                </div>
+              </div>
+
+              <div class="form__group">
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="taxNumber"
+                    formControlName="taxNumber"
+                    class="peer block"
+                    placeholder=" "
+                  />
+                  <label for="taxNumber" class="floating-label">Vergi Numarası</label>
+                </div>
+              </div>
+
+              <div class="form__group md:col-span-2">
+                <div class="relative">
+                  <textarea
+                    id="companyAddress"
+                    formControlName="companyAddress"
+                    rows="3"
+                    class="peer block"
+                    placeholder=" "
+                  ></textarea>
+                  <label for="companyAddress" class="floating-label">Şirket Adresi</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- İletişim Bilgileri -->
+          <div class="bg-card border border-border rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-foreground mb-4">İletişim Bilgileri</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="form__group">
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="contactPerson"
+                    formControlName="contactPerson"
+                    class="peer block"
+                    placeholder=" "
+                  />
+                  <label for="contactPerson" class="floating-label">İletişim Kişisi</label>
+                </div>
+              </div>
+
+              <div class="form__group">
+                <div class="relative">
+                  <input
+                    type="email"
+                    id="contactEmail"
+                    formControlName="contactEmail"
+                    class="peer block"
+                    placeholder=" "
+                  />
+                  <label for="contactEmail" class="floating-label">E-posta</label>
+                </div>
+              </div>
+
+              <div class="form__group">
+                <div class="relative">
+                  <input
+                    type="tel"
+                    id="contactPhone"
+                    formControlName="contactPhone"
+                    class="peer block"
+                    placeholder=" "
+                  />
+                  <label for="contactPhone" class="floating-label">Telefon</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Etkinlik Detayları -->
+          <div class="bg-card border border-border rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-foreground mb-4">Etkinlik Detayları</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="form__group">
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="title"
+                    formControlName="title"
+                    class="peer block"
+                    placeholder=" "
+                  />
+                  <label for="title" class="floating-label">Etkinlik Adı</label>
+                </div>
+              </div>
+
+              <div class="form__group">
+                <div class="relative">
+                  <select
+                    id="eventType"
+                    formControlName="eventType"
+                    class="peer block"
+                  >
+                    <option value="">Seçiniz</option>
+                    <option value="conference">Konferans</option>
+                    <option value="seminar">Seminer</option>
+                    <option value="workshop">Workshop</option>
+                    <option value="fair">Fuar</option>
+                    <option value="meeting">Toplantı</option>
+                  </select>
+                  <label for="eventType" class="floating-label">Etkinlik Tipi</label>
+                </div>
+              </div>
+
+              <div class="form__group">
+                <div class="relative">
+                  <input
+                    type="date"
+                    id="date"
+                    formControlName="date"
+                    class="peer block"
+                  />
+                  <label for="date" class="floating-label">Tarih</label>
+                </div>
+              </div>
+
+              <div class="form__group">
+                <div class="relative">
+                  <input
+                    type="time"
+                    id="time"
+                    formControlName="time"
+                    class="peer block"
+                  />
+                  <label for="time" class="floating-label">Saat</label>
+                </div>
+              </div>
+
+              <div class="form__group">
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="location"
+                    formControlName="location"
+                    class="peer block"
+                    placeholder=" "
+                  />
+                  <label for="location" class="floating-label">Mekan</label>
+                </div>
+              </div>
+
+              <div class="form__group">
+                <div class="relative">
+                  <select
+                    id="city"
+                    formControlName="city"
+                    class="peer block"
+                  >
+                    <option value="">Seçiniz</option>
+                    <option value="istanbul">İstanbul</option>
+                    <option value="ankara">Ankara</option>
+                    <option value="izmir">İzmir</option>
+                  </select>
+                  <label for="city" class="floating-label">Şehir</label>
+                </div>
+              </div>
+
+              <div class="form__group">
+                <div class="relative">
+                  <input
+                    type="number"
+                    id="capacity"
+                    formControlName="capacity"
+                    class="peer block"
+                    placeholder=" "
+                  />
+                  <label for="capacity" class="floating-label">Kapasite</label>
+                </div>
+              </div>
+
+              <div class="form__group">
+                <div class="relative">
+                  <input
+                    type="number"
+                    id="price"
+                    formControlName="price"
+                    class="peer block"
+                    placeholder=" "
+                  />
+                  <label for="price" class="floating-label">Bilet Fiyatı (₺)</label>
+                </div>
+              </div>
+
+              <div class="form__group md:col-span-2">
+                <div class="relative">
+                  <textarea
+                    id="description"
+                    formControlName="description"
+                    rows="4"
+                    class="peer block"
+                    placeholder=" "
+                  ></textarea>
+                  <label for="description" class="floating-label">Etkinlik Açıklaması</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ek Hizmetler -->
+          <div class="bg-card border border-border rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-foreground mb-4">Ek Hizmetler</h3>
+            <div class="space-y-4">
+              <label class="flex items-center space-x-2">
+                <input type="checkbox" formControlName="sponsorshipOptions" class="text-primary focus:ring-primary" />
+                <span class="text-muted-foreground">Sponsorluk Seçenekleri</span>
+              </label>
+
+              <label class="flex items-center space-x-2">
+                <input type="checkbox" formControlName="catering" class="text-primary focus:ring-primary" />
+                <span class="text-muted-foreground">Catering Hizmeti</span>
+              </label>
+
+              <label class="flex items-center space-x-2">
+                <input type="checkbox" formControlName="technicalEquipment" class="text-primary focus:ring-primary" />
+                <span class="text-muted-foreground">Teknik Ekipman</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="flex justify-end gap-4">
+            <button
+              type="button"
+              routerLink="/anasayfa/etkinlik-olustur"
+              class="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              İptal
+            </button>
+            <app-button impact="bold" tone="primary" shape="rounded" size="medium">
+              Etkinlik Oluştur
+            </app-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

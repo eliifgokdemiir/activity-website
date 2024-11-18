@@ -9,7 +9,7 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/home.svg', 
           label: 'Tüm Etkinlikler',
-          route: '/anasayfa/etkinlikler',
+          route: '/etkinlikler',
         },
         // {
         //   icon: 'assets/icons/heroicons/outline/music-note.svg', 

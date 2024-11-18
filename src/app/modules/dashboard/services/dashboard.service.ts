@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, delay } from 'rxjs';
 import { Activity } from '../models/activity';
 
 @Injectable({
@@ -24,6 +24,7 @@ export class DashboardService {
       id: 34356772,
       title: 'Happy Halloween',
       type: 'festival', 
+      creator: 'Tarkan',
       price: 548.79,
       date: '2024-10-31',
       location: 'Jolly Joker',
@@ -33,7 +34,8 @@ export class DashboardService {
     {
       id: 34356773,
       title: 'Perdenin Ardındakiler',
-      type: 'konser', 
+      type: 'konser',  
+      creator: 'Tarkan',
       price: 234.88,
       date: '2024-11-15',
       location: '6:45',
@@ -44,6 +46,7 @@ export class DashboardService {
       id: 34356774,
       title: 'Çocuk Tiyatrosu',
       type: 'tiyatro', 
+      creator: 'Tarkan',
       price: 150.00,
       date: '2024-12-01',
       location: 'Devlet Tiyatrosu',
@@ -54,6 +57,7 @@ export class DashboardService {
       id: 34356775,
       title: 'Müzikal Gece',
       type: 'muzikal', 
+      creator: 'Tarkan',
       price: 300.00,
       date: '2024-11-10',
       location: 'Sahne Gösteri Merkezi',
@@ -64,6 +68,7 @@ export class DashboardService {
       id: 34356776,
       title: 'Stand-Up Gecesi',
       type: 'standup', 
+      creator: 'Tarkan',
       price: 200.00,
       date: '2024-11-20',
       location: 'Kültür Merkezi',
@@ -83,7 +88,6 @@ export class DashboardService {
       image: './assets/images/img-01.jpg',
       avatar: './assets/avatars/avt-01.jpg',
     },
-
   ];
 
   getAllActivities(): Observable<Activity[]> {
@@ -101,8 +105,34 @@ export class DashboardService {
       filteredActivities = filteredActivities.filter(activity => activity.type === type);
     }
 
-    console.log('Filtered Activities:', filteredActivities); 
-
     return of(filteredActivities);
+  }
+
+  getActivityById(id: string): Observable<Activity> {
+    const mockActivity: Activity = {
+      id: parseInt(id),
+      title: 'Mock Etkinlik',
+      type: 'konser',
+      price: 100,
+      creator: 'Mock Sanatçı',
+      creatorDescription: 'Sanatçı hakkında detaylı bilgi...',
+      date: '2024-03-20',
+      time: '20:00',
+      location: 'Mock Venue',
+      image: 'assets/images/mock-event.jpg',
+      seatingType: 'numbered' as 'numbered' | 'free',
+      ticketTypes: [
+        { type: 'Tam', price: 100, available: true },
+        { type: 'Öğrenci', price: 50, available: true },
+        { type: 'VIP', price: 200, available: false }
+      ],
+      rules: [
+        '18 yaş sınırı vardır.',
+        'Etkinlik alanına yiyecek ve içecek sokmak yasaktır.',
+        'Fotoğraf makinesi ve video kayıt cihazları kullanılamaz.'
+      ]
+    };
+
+    return of(mockActivity).pipe(delay(500));
   }
 }

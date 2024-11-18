@@ -7,8 +7,11 @@ import { ActivityDualCardComponent } from '../../components/activity/activity-du
 import { ActivityHeaderComponent } from '../../components/activity/activity-header/activity-header.component';
 import { DashboardService } from '../../services/dashboard.service';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { SidebarComponent } from 'src/app/modules/layout/components/sidebar/sidebar.component';
+import { NavbarComponent } from 'src/app/modules/layout/components/navbar/navbar.component';
+import { ButtonComponent } from 'src/app/shared/components/button/button.component';
 
 @Component({
     selector: 'app-activity',
@@ -21,7 +24,11 @@ import { FormsModule } from '@angular/forms';
       ActivityChartCardComponent,
       ActivityAuctionsTableComponent,
       CommonModule,
-      FormsModule
+      FormsModule,
+      RouterModule,
+      SidebarComponent,
+      NavbarComponent,
+      ButtonComponent
     ],
 })
 export class ActivityComponent implements OnInit {
@@ -41,58 +48,86 @@ export class ActivityComponent implements OnInit {
   selectedCity: string = ''; 
   searchTerm: string = ''; 
 
-  constructor(private dashboardService: DashboardService, private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private dashboardService: DashboardService, 
+    private router: Router, 
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.loadAllActivities();
-    
-    this.route.queryParams.subscribe(params => {
+    // URL'den type parametresini al
+    this.route.params.subscribe(params => {
       const type = params['type'];
       if (type) {
         this.loadActivities(type);
+      } else {
+        this.loadAllActivities();
       }
     });
   }
+  
+
   filterByCity() {
     if (!this.selectedCity) {
       this.loadAllActivities();
     } else {
-      this.dashboardService.getActivities(this.selectedCity).subscribe((activities) => {
-        this.activities = activities;
-        console.log(`Loaded activities for city ${this.selectedCity}:`, activities);
+      this.dashboardService.getActivities(this.selectedCity).subscribe({
+        next: (activities) => {
+          this.activities = activities;
+          this.filteredActivities = activities;
+          console.log(`Loaded activities for city ${this.selectedCity}:`, activities);
+        },
+        error: (error) => {
+          console.error('Error loading activities by city:', error);
+        }
       });
     }
   }
-  goToCategory(type: string) {
-    
-    this.dashboardService.getActivities(undefined, type).subscribe((activities) => {
-      this.activities = activities;
-      console.log(`Activities for type ${type}:`, activities);
-    });
 
-    this.router.navigate([type], { relativeTo: this.route });
+  goToCategory(type: string) {
+    this.router.navigate(['/etkinlikler', type]);
   }
+
   loadActivities(type: string) {
-    this.dashboardService.getActivities(undefined, type).subscribe((activities) => {
-      this.activities = activities;
-      this.filteredActivities = activities; 
-      console.log(`Loaded activities for type ${type}:`, activities);
+    this.dashboardService.getActivities(undefined, type).subscribe({
+      next: (activities) => {
+        this.activities = activities;
+        this.filteredActivities = activities;
+        console.log(`Loaded activities for type ${type}:`, activities);
+      },
+      error: (error) => {
+        console.error('Error loading activities:', error);
+      }
     });
   }
+
   loadAllActivities() {
-    this.dashboardService.getAllActivities().subscribe((activities) => {
-      this.activities = activities;
-      console.log('Loaded all activities:', activities);
+    this.dashboardService.getAllActivities().subscribe({
+      next: (activities) => {
+        this.activities = activities;
+        this.filteredActivities = activities;
+        console.log('Loaded all activities:', activities);
+      },
+      error: (error) => {
+        console.error('Error loading all activities:', error);
+      }
     });
   }
+
   filterBySearch() {
-    this.applySearchFilter();
+    if (!this.searchTerm.trim()) {
+      this.filteredActivities = this.activities;
+    } else {
+      this.applySearchFilter();
+    }
   }
 
   private applySearchFilter() {
+    const searchTerm = this.searchTerm.toLowerCase().trim();
     this.filteredActivities = this.activities.filter(activity =>
-      activity.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      activity.type.toLowerCase().includes(this.searchTerm.toLowerCase())
+      activity.title?.toLowerCase().includes(searchTerm) ||
+      activity.type?.toLowerCase().includes(searchTerm) ||
+      activity.location?.toLowerCase().includes(searchTerm)
     );
   }
 }

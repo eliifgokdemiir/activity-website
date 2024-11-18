@@ -1,92 +1,152 @@
-<div class="flex h-screen w-full overflow-hidden">
+<div class="flex h-screen w-full overflow-hidden bg-background">
   <app-sidebar></app-sidebar>
-  <div class="flex grow flex-col content-start overflow-hidden bg-card">
+  <div class="flex grow flex-col content-start overflow-hidden bg-background p-4 md:p-6">
     <app-navbar></app-navbar>
     
-        <div class="rounded-lg bg-background p-8 mb-8">
-          <div class="mb-4 flex items-center justify-between">
-            <div class="flex-col items-center">
-              <h3 class="text-lg font-semibold text-foreground">Aktif Biletler</h3>
-              <span class="text-xs text-muted-foreground">Şu anda etkin olan biletler</span>
-            </div>
-          </div>
-          
-          <table class="w-full table-auto">
-            <tbody>
-              <tr *ngFor="let ticket of activeTickets">
-                <td class="py-2 pr-2">
-                  <div class="flex items-center">
-                    <img [src]="ticket.image" class="mr-2 h-10 w-10 flex-none rounded-sm" alt="Ticket Image" />
-                    <div class="flex flex-col">
-                      <a href="#" class="mb-1 text-sm font-semibold text-foreground">{{ ticket.title }}</a>
-                      <span class="text-xs font-semibold text-muted-foreground/50">{{ ticket.creator }}</span>
-                    </div>
-                  </div>
-                </td>
-                <td class="py-2 pl-2 text-right">
-                  <span class="text-sm font-semibold text-muted-foreground">{{ ticket.instant_price }}</span>
-                </td>
-                <td class="py-2 pl-2 text-right">
-                  <span class="text-sm font-semibold text-muted-foreground">{{ ticket.price | currency:'₺' }}</span>
-                </td>
-                <td class="py-2 pl-2 text-right">
-                  <span class="text-sm font-semibold text-muted-foreground">{{ ticket.date }}</span>
-                </td>
-                <td class="py-2 pl-2 text-right">
-                  <div class="flex justify-end">
-                    <button
-                      class="flex h-7 w-7 items-center justify-center rounded-md bg-card text-muted-foreground hover:bg-muted hover:text-foreground">
-                      <svg-icon src="assets/icons/heroicons/outline/arrow-sm-right.svg" [svgClass]="'h-5 w-5'"></svg-icon>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+    <!-- Aktif Biletler -->
+    <div class="rounded-lg bg-card p-8 mb-8 border border-border">
+      <div class="mb-6 flex items-center justify-between">
+        <div class="flex-col">
+          <h3 class="text-xl font-semibold text-foreground">Aktif Biletler<span class="text-primary">.</span></h3>
+          <p class="text-sm text-muted-foreground mt-1">Yaklaşan etkinlikleriniz</p>
         </div>
-    
-        <!-- Geçmiş Biletler -->
-        <div class="rounded-lg bg-background p-8">
-          <div class="mb-4 flex items-center justify-between">
-            <div class="flex-col items-center">
-              <h3 class="text-lg font-semibold text-foreground">Geçmiş Biletler</h3>
-              <span class="text-xs text-muted-foreground">Daha önce alınan etkinlikler</span>
+      </div>
+      
+      <!-- Biletler Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div *ngFor="let ticket of activeTickets" 
+             class="group relative flex bg-background rounded-xl border border-border p-4 hover:border-primary/50 transition-all duration-300">
+          <!-- Sol taraf: Görsel ve QR -->
+          <div class="relative w-32 h-32 flex-shrink-0">
+            <img [src]="ticket.image" 
+                 [alt]="ticket.title" 
+                 class="w-full h-full object-cover rounded-lg"
+            />
+            <div class="absolute top-2 right-2 bg-background/80 backdrop-blur-sm p-1 rounded-md">
+              <img src="assets/icons/heroicons/outline/qr-code.svg" class="w-5 h-5" alt="QR Code" />
             </div>
           </div>
-    
-          <table class="w-full table-auto">
-            <tbody>
-              <tr *ngFor="let ticket of pastTickets">
-                <td class="py-2 pr-2">
-                  <div class="flex items-center">
-                    <img [src]="ticket.image" class="mr-2 h-10 w-10 flex-none rounded-sm" alt="Ticket Image" />
-                    <div class="flex flex-col">
-                      <a href="#" class="mb-1 text-sm font-semibold text-foreground">{{ ticket.title }}</a>
-                      <span class="text-xs font-semibold text-muted-foreground/50">{{ ticket.creator }}</span>
-                    </div>
-                  </div>
-                </td>
-                <td class="py-2 pl-2 text-right">
-                  <span class="text-sm font-semibold text-muted-foreground">{{ ticket.instant_price }}</span>
-                </td>
-                <td class="py-2 pl-2 text-right">
-                  <span class="text-sm font-semibold text-muted-foreground">{{ ticket.price | currency:'₺' }}</span>
-                </td>
-                <td class="py-2 pl-2 text-right">
-                  <span class="text-sm font-semibold text-muted-foreground">{{ ticket.date }}</span>
-                </td>
-                <td class="py-2 pl-2 text-right">
-                  <div class="flex justify-end">
-                    <button
-                      class="flex h-7 w-7 items-center justify-center rounded-md bg-card text-muted-foreground hover:bg-muted hover:text-foreground">
-                      <svg-icon src="assets/icons/heroicons/outline/arrow-sm-right.svg" [svgClass]="'h-5 w-5'"></svg-icon>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+
+          <!-- Sağ taraf: Bilet Detayları -->
+          <div class="ml-4 flex flex-col flex-grow">
+            <div class="flex justify-between items-start">
+              <div>
+                <h4 class="font-semibold text-foreground group-hover:text-primary transition-colors">
+                  {{ ticket.title }}
+                </h4>
+                <p class="text-sm text-muted-foreground">{{ ticket.creator }}</p>
+              </div>
+              <div class="text-right">
+                <p class="text-sm font-medium text-foreground">{{ ticket.price | currency:'₺' }}</p>
+                <p class="text-xs text-muted-foreground">{{ ticket.date | date }} {{ ticket.time }}</p>
+              </div>
+            </div>
+
+            <!-- Bilet Detayları -->
+            <div class="mt-4 flex items-center gap-4 text-sm text-muted-foreground">
+              <div class="flex items-center gap-1">
+                <img src="assets/icons/heroicons/outline/map-pin.svg" class="w-4 h-4" alt="Location" />
+                <span>{{ ticket.location }}</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <img src="assets/icons/heroicons/outline/ticket.svg" class="w-4 h-4" alt="Ticket" />
+                <span>Bilet No: #{{ ticket.id }}</span>
+              </div>
+            </div>
+
+            <!-- Aksiyon Butonları -->
+            <div class="mt-4 flex gap-2">
+              <button class="px-3 py-1.5 text-xs font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+                Bileti Görüntüle
+              </button>
+              <button class="px-3 py-1.5 text-xs font-medium rounded-md bg-card text-muted-foreground hover:bg-muted transition-colors">
+                Takvime Ekle
+              </button>
+            </div>
+          </div>
+
+          <!-- Bilet Kenarı Efekti -->
+          <div class="absolute -left-[2px] top-1/2 -translate-y-1/2 h-16 w-[3px] flex flex-col justify-between">
+            <div class="w-full h-[3px] rounded-full bg-border"></div>
+            <div class="w-full h-[3px] rounded-full bg-border"></div>
+          </div>
+          <div class="absolute -right-[2px] top-1/2 -translate-y-1/2 h-16 w-[3px] flex flex-col justify-between">
+            <div class="w-full h-[3px] rounded-full bg-border"></div>
+            <div class="w-full h-[3px] rounded-full bg-border"></div>
+          </div>
         </div>
       </div>
     </div>
+    
+    <!-- Geçmiş Biletler -->
+    <div class="rounded-lg bg-card p-8 border border-border">
+      <div class="mb-6 flex items-center justify-between">
+        <div class="flex-col">
+          <h3 class="text-xl font-semibold text-foreground">Geçmiş Biletler<span class="text-primary">.</span></h3>
+          <p class="text-sm text-muted-foreground mt-1">Katıldığınız etkinlikler</p>
+        </div>
+      </div>
+
+      <!-- Geçmiş Biletler Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div *ngFor="let ticket of pastTickets" 
+             class="group relative flex bg-background/50 rounded-xl border border-border p-4 hover:border-primary/50 transition-all duration-300">
+          <!-- Sol taraf: Görsel -->
+          <div class="relative w-32 h-32 flex-shrink-0 opacity-75">
+            <img [src]="ticket.image" 
+                 [alt]="ticket.title" 
+                 class="w-full h-full object-cover rounded-lg grayscale"
+            />
+            <div class="absolute inset-0 bg-background/10 rounded-lg"></div>
+          </div>
+
+          <!-- Sağ taraf: Bilet Detayları -->
+          <div class="ml-4 flex flex-col flex-grow">
+            <div class="flex justify-between items-start">
+              <div>
+                <h4 class="font-semibold text-muted-foreground">
+                  {{ ticket.title }}
+                </h4>
+                <p class="text-sm text-muted-foreground/75">{{ ticket.creator }}</p>
+              </div>
+              <div class="text-right">
+                <p class="text-sm font-medium text-muted-foreground">{{ ticket.price | currency:'₺' }}</p>
+                <p class="text-xs text-muted-foreground/75">{{ ticket.date | date }} {{ ticket.time }}</p>
+              </div>
+            </div>
+
+            <!-- Bilet Detayları -->
+            <div class="mt-4 flex items-center gap-4 text-sm text-muted-foreground/75">
+              <div class="flex items-center gap-1">
+                <img src="assets/icons/heroicons/outline/map-pin.svg" class="w-4 h-4 opacity-75" alt="Location" />
+                <span>{{ ticket.location }}</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <img src="assets/icons/heroicons/outline/ticket.svg" class="w-4 h-4 opacity-75" alt="Ticket" />
+                <span>Bilet No: #{{ ticket.id }}</span>
+              </div>
+            </div>
+
+            <!-- Aksiyon Butonları -->
+            <div class="mt-4">
+              <button class="px-3 py-1.5 text-xs font-medium rounded-md bg-card text-muted-foreground hover:bg-muted transition-colors">
+                Etkinliği Değerlendir
+              </button>
+            </div>
+          </div>
+
+          <!-- Bilet Kenarı Efekti -->
+          <div class="absolute -left-[2px] top-1/2 -translate-y-1/2 h-16 w-[3px] flex flex-col justify-between opacity-50">
+            <div class="w-full h-[3px] rounded-full bg-border"></div>
+            <div class="w-full h-[3px] rounded-full bg-border"></div>
+          </div>
+          <div class="absolute -right-[2px] top-1/2 -translate-y-1/2 h-16 w-[3px] flex flex-col justify-between opacity-50">
+            <div class="w-full h-[3px] rounded-full bg-border"></div>
+            <div class="w-full h-[3px] rounded-full bg-border"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
