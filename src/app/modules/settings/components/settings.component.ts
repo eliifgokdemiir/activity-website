@@ -6,11 +6,12 @@ import { NavbarComponent } from '../../layout/components/navbar/navbar.component
 import { RouterOutlet } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { LayoutModule } from '../../layout/layout.module';
+import { ButtonComponent } from 'src/app/shared/components/button/button.component';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [CommonModule, FormsModule, SidebarComponent, NavbarComponent, RouterOutlet, AngularSvgIconModule, LayoutModule],
+  imports: [CommonModule, FormsModule, SidebarComponent, NavbarComponent, RouterOutlet, AngularSvgIconModule, LayoutModule, ButtonComponent],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss'
 })
