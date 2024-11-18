@@ -111,28 +111,33 @@ export class DashboardService {
   getActivityById(id: string): Observable<Activity> {
     const mockActivity: Activity = {
       id: parseInt(id),
-      title: 'Mock Etkinlik',
+      title: 'TARKAN KONSERİ',
       type: 'konser',
-      price: 100,
-      creator: 'Mock Sanatçı',
-      creatorDescription: 'Sanatçı hakkında detaylı bilgi...',
-      date: '2024-03-20',
-      time: '20:00',
-      location: 'Mock Venue',
-      image: 'assets/images/mock-event.jpg',
-      seatingType: 'numbered' as 'numbered' | 'free',
+      price: 187.47,
+      creator: 'Tarkan',
+      creatorDescription: 'Türk pop müziğinin megastarı Tarkan, en sevilen şarkılarıyla muhteşem bir konser deneyimi sunuyor.',
+      date: '2024-09-09',
+      time: '21:00',
+      location: 'ODTÜ Vişnelik',
+      image: './assets/images/img-01.jpg',
+      avatar: './assets/avatars/avt-01.jpg',
+      seatingType: 'numbered',
       ticketTypes: [
-        { type: 'Tam', price: 100, available: true },
-        { type: 'Öğrenci', price: 50, available: true },
-        { type: 'VIP', price: 200, available: false }
+        { type: 'VIP', price: 400, available: true },
+        { type: 'Sahne Önü', price: 300, available: true },
+        { type: 'Tam', price: 187.47, available: true },
+        { type: 'Öğrenci', price: 150, available: false }
       ],
       rules: [
         '18 yaş sınırı vardır.',
         'Etkinlik alanına yiyecek ve içecek sokmak yasaktır.',
-        'Fotoğraf makinesi ve video kayıt cihazları kullanılamaz.'
+        'Fotoğraf makinesi ve video kayıt cihazları kullanılamaz.',
+        'Kapı açılış saati: 19:00',
+        'Bilet iade ve değişimi yapılmamaktadır.',
+        'Organizatör firma etkinlikte değişiklik yapma hakkını saklı tutar.'
       ]
     };
-
+  
     return of(mockActivity).pipe(delay(500));
   }
 }

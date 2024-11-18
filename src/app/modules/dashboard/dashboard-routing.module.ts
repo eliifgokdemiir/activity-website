@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { ActivityComponent } from './pages/activity/activity.component';
+import { TicketDetailComponent } from './pages/ticket-detail/ticket-detail.component';
+
 
 const routes: Routes = [
   {
@@ -16,6 +18,11 @@ const routes: Routes = [
         path: ':type',
         component: ActivityComponent
       },
+      {
+        path: 'etkinlik/:id',
+        component: TicketDetailComponent
+      }
+  
       
     ]
   }
