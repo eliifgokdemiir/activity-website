@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Activity } from '../../models/activity';
 import { DashboardService } from '../../services/dashboard.service';
@@ -44,7 +44,8 @@ export class TicketDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -67,12 +68,16 @@ export class TicketDetailComponent implements OnInit {
       }
     });
   }
-
-  setActiveTab(tab: 'tickets' | 'artist' | 'rules') {
-    this.activeTab = tab;
+  setActiveTab(tab: string) {
+    if (tab === 'tickets' || tab === 'artist' || tab === 'rules') {
+      this.activeTab = tab as 'tickets' | 'artist' | 'rules';
+    }
   }
 
   selectTicketType(type: string) {
     this.selectedTicketType = type;
+  }
+  goBack(){
+    this.router.navigate(['/']);
   }
 } 
