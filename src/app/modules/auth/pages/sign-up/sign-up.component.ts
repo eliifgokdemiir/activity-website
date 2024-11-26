@@ -6,6 +6,7 @@ import { ButtonComponent } from 'src/app/shared/components/button/button.compone
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { SignUpRequestModel } from '../../models/sign-up-request.model';
 
 @Component({
   selector: 'app-sign-up',
@@ -53,33 +54,51 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true; 
-    this.errorMessage = null; 
-
+    this.submitted = true;
+    this.errorMessage = null;
+  
     if (this.form.invalid) {
       return;
     }
-
-    const { email, password, confirmPassword } = this.form.value;
+  
+    const { password, confirmPassword } = this.form.value;
     if (password !== confirmPassword) {
       this.errorMessage = 'Şifreler uyuşmuyor.';
       return;
     }
-
+  
     this.loading = true;
-
-    this._authService
-      .register(this.form.value)
-      .subscribe({
-        next: (response) => {
-          this.loading = false;
-          console.log('Kayıt Başarılı:', response);
-          this._router.navigate(['/auth/sign-in']); 
-        },
-        error: (err) => {
-          this.loading = false;
-          this.errorMessage = err.error?.message || 'Kayıt sırasında bir hata oluştu.';
-        },
-      });
+  
+    const registerData: SignUpRequestModel = {
+      username: this.form.value.username,
+      password: this.form.value.password,
+      email: this.form.value.email,
+      name: this.form.value.name,
+      surname: this.form.value.surname,
+      age: Number(this.form.value.age),
+      phoneNumber: this.form.value.phoneNumber
+    };
+  
+    this._authService.register(registerData).subscribe({
+      next: (response) => {
+        this.loading = false;
+        if (response.status) {
+          console.log('Kayıt başarılı:', response.message);
+          // Başarılı kayıt sonrası giriş sayfasına yönlendir
+          this._router.navigate(['/auth/sign-in']);
+        } else {
+          this.errorMessage = response.message;
+        }
+      },
+      error: (err) => {
+        this.loading = false;
+        console.error('Kayıt hatası:', err);
+        if (err.error?.message) {
+          this.errorMessage = err.error.message;
+        } else {
+          this.errorMessage = 'Kayıt sırasında bir hata oluştu.';
+        }
+      }
+    });
   }
 }

@@ -1,5 +1,16 @@
 export interface SignUpResponseModel {
-    success: boolean; // İşlem başarılı mı?
-    message: string; // Sunucudan dönen mesaj
-  }
-  
+  status: boolean;
+  message: string;
+  data?: {
+    access_token: string;
+    user: {
+      id: string;
+      username: string;
+      email: string;
+      name: string;
+      surname: string;
+      age: number;
+      phoneNumber: string;
+    }
+  };
+}

@@ -44,24 +44,42 @@ export class SignInComponent implements OnInit {
     this.submitted = true;
     this.errorMessage = null;
 
-    if(this.form.invalid){
+    if (this.form.invalid) {
       return;
     }
 
-    const { email, password} = this.form.value;
-
+    const { email, password } = this.form.value;
     this.loading = true;
 
-    this._authService.login({ username: email, password }).subscribe({
+    const loginData = {
+      username: email,
+      password: password
+    };
+
+    this._authService.login(loginData).subscribe({
       next: (response) => {
         this.loading = false;
-        console.log('giriş başarılı', response);
-        this._router.navigate(['/']);
+        if (response.status && response.data.access_token) {
+          // Başarılı giriş
+          console.log('Giriş başarılı:', response.message);
+          this._router.navigate(['/']);
+        } else {
+          // API başarılı yanıt verdi ama token yok
+          this.errorMessage = response.message || 'Giriş başarısız. Lütfen bilgilerinizi kontrol edin.';
+        }
       },
       error: (err) => {
+        console.error('Giriş hatası:', err);
         this.loading = false;
-        this.errorMessage = err.error?.message || 'Bir hata oluştu, lütfen tekrar deneyiniz.';
+        if (err.status === 401) {
+          this.errorMessage = 'Kullanıcı adı veya şifre hatalı.';
+        } else {
+          this.errorMessage = err.error?.message || 'Giriş yapılırken bir hata oluştu.';
+        }
       },
     });
+  }
+  navigateToSignUp() {
+    this._router.navigate(['/auth/sign-up']);
   }
 }

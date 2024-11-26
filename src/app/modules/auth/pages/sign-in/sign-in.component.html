@@ -74,4 +74,41 @@
       {{ loading ? 'Giriş Yapılıyor...' : 'Giriş Yap' }}
     </app-button>
   </div>
+
+   <!-- Üyelik Bağlantısı -->
+   <div class="text-center mt-6">
+    <p class="text-sm text-muted-foreground">
+      Henüz üye değil misiniz?
+      <a 
+        routerLink="/auth/sign-up" 
+        class="font-semibold text-primary hover:underline hover:text-primary/90 transition-colors">
+        Üye Ol
+      </a>
+    </p>
+  </div>
 </form>
+
+<!-- Alternatif Giriş Yöntemleri (opsiyonel) -->
+<div class="mt-6">
+  <div class="relative">
+    <div class="absolute inset-0 flex items-center">
+      <div class="w-full border-t border-border"></div>
+    </div>
+    <div class="relative flex justify-center text-sm">
+      <span class="bg-background px-2 text-muted-foreground">veya</span>
+    </div>
+  </div>
+
+  <div class="mt-6 grid grid-cols-1 gap-3">
+    <button
+      type="button"
+      class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-border bg-background px-3 py-2.5 text-sm font-semibold text-foreground shadow-sm transition-colors hover:bg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+      <svg-icon
+        src="assets/icons/social/google.svg"
+        [svgClass]="'h-5 w-5'">
+      </svg-icon>
+      Google ile devam et
+    </button>
+  </div>
+</div>
+

@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { NgClass } from '@angular/common';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { CommonModule, NgClass } from '@angular/common';
 import { ClickOutsideDirective } from '../../../../../shared/directives/click-outside.directive';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ThemeService } from '../../../../../core/services/theme.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { LayoutService } from '@/modules/layout/services/layout.service';
+import { NavbarComponent } from '../navbar.component';
+import { AuthService } from '@/modules/auth/services/auth.service';
+
 
 @Component({
   selector: 'app-profile-menu',
   templateUrl: './profile-menu.component.html',
   styleUrls: ['./profile-menu.component.scss'],
   standalone: true,
-  imports: [ClickOutsideDirective, NgClass, RouterLink, AngularSvgIconModule],
+  imports: [ClickOutsideDirective, NgClass, RouterLink, AngularSvgIconModule, NavbarComponent, CommonModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   animations: [
     trigger('openClose', [
       state(
@@ -36,7 +41,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   ],
 })
 export class ProfileMenuComponent implements OnInit {
+  @Input() userProfile: any;  
   public isOpen = false;
+
   public profileMenu = [
     {
       title: 'Profil',
@@ -88,10 +95,28 @@ export class ProfileMenuComponent implements OnInit {
 
   public themeMode = ['light', 'dark'];
 
-  constructor(public themeService: ThemeService) {}
+  constructor(public themeService: ThemeService, private layoutService: LayoutService,  private authService: AuthService,
+    private router: Router) {}
 
-  ngOnInit(): void {}
-
+    ngOnInit(): void {
+      // Profil bilgilerini yükle
+      this.layoutService.userProfile$.subscribe(profile => {
+        if (profile) {
+          this.userProfile = profile;
+          console.log('Güncel profil:', profile);
+        }
+      });
+  
+      // İlk yükleme
+      this.layoutService.loadUserProfile();
+    }
+  
+    logout(): void {
+      this.authService.logout();
+      this.userProfile = null; // Profil bilgilerini temizle
+      this.router.navigate(['/auth/sign-in']);
+    }
+  
   public toggleMenu(): void {
     this.isOpen = !this.isOpen;
   }
@@ -108,4 +133,20 @@ export class ProfileMenuComponent implements OnInit {
       return { ...theme, color: color };
     });
   }
+
+  private loadUserProfile(): void {
+    this.layoutService.getUserProfile().subscribe({
+      next: (profile) => {
+        this.userProfile = profile; 
+        console.log('Kullanıcı Profili:', profile);
+      },
+      error: (err) => {
+        console.error('Kullanıcı profili alınamadı:', err);
+      },
+    });
+  }
+  toggleProfile() {
+    this.router.navigate(['/profile']);
+  }
+
 }

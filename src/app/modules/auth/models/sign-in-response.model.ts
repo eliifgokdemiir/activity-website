@@ -1,5 +1,12 @@
 export interface SignInResponseModel {
-    token: string; // Giriş yaptıktan sonra dönen token bilgisi
-    username: string; // Kullanıcı adı
-    roles: string[]; // Kullanıcının rolleri (örneğin: admin, user)
+  status: boolean;
+  message: string;
+  email: string;
+  data: {
+    user: {
+      username?: string;
+      roles?: string[];
+    };
+    access_token: string;
   }
+}

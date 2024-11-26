@@ -20,6 +20,14 @@
         </button>
       </div>
 
+         <!-- Kullanıcı bilgileri - Desktop -->
+         <div class="hidden md:flex items-center space-x-4">
+          <div *ngIf="userProfile" class="text-sm">
+            <span class="font-semibold">{{ userProfile?.name }}</span>
+            <span class="text-muted-foreground text-xs block">{{ userProfile?.email }}</span>
+          </div>
+        </div>
+
       <!-- Logo -->
       <!-- <div class="flex items-center justify-start sm:order-2 md:mr-10 lg:hidden">
         <a class="flex items-center justify-center rounded bg-primary p-2 focus:outline-none focus:ring-1">
@@ -35,10 +43,10 @@
 
       <!-- Profile menu -->
       <div class="items-center justify-end sm:order-4 md:flex md:flex-1 lg:w-0">
-        <app-profile-menu></app-profile-menu>
+        <app-profile-menu [userProfile]="userProfile"></app-profile-menu>
       </div>
     </div>
   </div>
   <!-- Mobile menu -->
-  <app-navbar-mobile></app-navbar-mobile>
+  <app-navbar-mobile [userProfile]="userProfile"></app-navbar-mobile>
 </div>

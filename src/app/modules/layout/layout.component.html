@@ -5,7 +5,21 @@
   <div class="flex grow flex-col content-start overflow-hidden bg-card">
     <!-- Header -->
     <app-navbar></app-navbar>
-    <!-- main content -->
+
+    <div *ngIf="userProfile" class="bg-primary text-white p-4 flex items-center justify-between">
+      <div>
+        <h3 class="text-lg font-semibold">Hoşgeldiniz, {{ userProfile.name }}</h3>
+        <p class="text-sm">E-posta: {{ userProfile.email }}</p>
+      </div>
+      <div>
+        <img
+          [src]="userProfile.avatar || 'assets/images/default-avatar.png'"
+          alt="Kullanıcı Avatarı"
+          class="w-12 h-12 rounded-full object-cover"
+        />
+      </div>
+    </div>
+
     <div
       id="main-content"
       class="scrollbar-thumb-rounded scrollbar-track-rounded grow overflow-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted">
