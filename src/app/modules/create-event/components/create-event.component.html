@@ -31,7 +31,7 @@
             
             <div class="flex items-center gap-4">
               <button 
-                routerLink="/anasayfa/etkinlik-olustur/bireysel"
+              [routerLink]="['bireysel']"
                 class="flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors">
                 <span>Oluştur</span>
                 <img src="assets/icons/heroicons/outline/arrow-right.svg" class="w-4 h-4" alt="Arrow" />
@@ -77,7 +77,7 @@
             
             <div class="flex items-center gap-4">
               <button 
-                routerLink="/anasayfa/etkinlik-olustur/kurumsal"
+              [routerLink]="['kurumsal']"
                 class="flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors">
                 <span>Oluştur</span>
                 <img src="assets/icons/heroicons/outline/arrow-right.svg" class="w-4 h-4" alt="Arrow" />

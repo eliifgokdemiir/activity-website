@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { SidebarComponent } from '../../../layout/components/sidebar/sidebar.component';
 import { NavbarComponent } from '../../../layout/components/navbar/navbar.component';
 import { ButtonComponent } from 'src/app/shared/components/button/button.component';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-corporate-event',
@@ -15,7 +15,8 @@ import { RouterModule } from '@angular/router';
     SidebarComponent,
     NavbarComponent,
     ButtonComponent,
-    RouterModule
+    RouterModule,
+    RouterLink
   ],
   templateUrl: './corporate-event.component.html'
 })

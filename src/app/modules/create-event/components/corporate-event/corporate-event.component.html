@@ -5,14 +5,15 @@
     <!-- Overflow-y-auto ekledik -->
     <div class="flex-1 overflow-y-auto">
       <div class="max-w-4xl mx-auto w-full mt-8 pb-20">
-        <div class="flex items-center gap-2 mb-8">
-          <a 
-            routerLink="../"
-            class="text-muted-foreground hover:text-foreground transition-colors">
-            <img src="assets/icons/heroicons/outline/arrow-left.svg" class="w-5 h-5" alt="Back" />
-          </a>
-          <h2 class="text-2xl font-semibold text-foreground">Kurumsal Etkinlik Oluştur<span class="text-primary">.</span></h2>
-        </div>
+       <!-- Geri Dön Butonu -->
+       <div class="flex items-center gap-2 mb-8">
+        <a 
+          routerLink="../"
+          class="text-muted-foreground hover:text-foreground transition-colors">
+          <img src="assets/icons/heroicons/outline/arrow-left.svg" class="w-5 h-5" alt="Back" />
+        </a>
+        <h2 class="text-2xl font-semibold text-foreground">Kurumsal Etkinlik Oluştur<span class="text-primary">.</span></h2>
+      </div>
 
         <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="space-y-6">
           <!-- Görsel Yükleme -->
@@ -54,7 +55,7 @@
                     class="peer block"
                     placeholder=" "
                   />
-                  <label for="companyName" class="floating-label">Şirket Adı</label>
+                  <label for="companyName" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">Şirket Adı</label>
                 </div>
               </div>
 
@@ -67,7 +68,7 @@
                     class="peer block"
                     placeholder=" "
                   />
-                  <label for="taxNumber" class="floating-label">Vergi Numarası</label>
+                  <label for="taxNumber" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">Vergi Numarası</label>
                 </div>
               </div>
 
@@ -80,7 +81,7 @@
                     class="peer block"
                     placeholder=" "
                   ></textarea>
-                  <label for="companyAddress" class="floating-label">Şirket Adresi</label>
+                  <label for="companyAddress" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">Şirket Adresi</label>
                 </div>
               </div>
             </div>
@@ -99,7 +100,7 @@
                     class="peer block"
                     placeholder=" "
                   />
-                  <label for="contactPerson" class="floating-label">İletişim Kişisi</label>
+                  <label for="contactPerson" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">İletişim Kişisi</label>
                 </div>
               </div>
 
@@ -112,7 +113,7 @@
                     class="peer block"
                     placeholder=" "
                   />
-                  <label for="contactEmail" class="floating-label">E-posta</label>
+                  <label for="contactEmail" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">E-posta</label>
                 </div>
               </div>
 
@@ -125,7 +126,7 @@
                     class="peer block"
                     placeholder=" "
                   />
-                  <label for="contactPhone" class="floating-label">Telefon</label>
+                  <label for="contactPhone" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">Telefon</label>
                 </div>
               </div>
             </div>
@@ -144,7 +145,7 @@
                     class="peer block"
                     placeholder=" "
                   />
-                  <label for="title" class="floating-label">Etkinlik Adı</label>
+                  <label for="title" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">Etkinlik Adı</label>
                 </div>
               </div>
 
@@ -162,7 +163,7 @@
                     <option value="fair">Fuar</option>
                     <option value="meeting">Toplantı</option>
                   </select>
-                  <label for="eventType" class="floating-label">Etkinlik Tipi</label>
+                  <label for="eventType" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">Etkinlik Tipi</label>
                 </div>
               </div>
 
@@ -174,7 +175,7 @@
                     formControlName="date"
                     class="peer block"
                   />
-                  <label for="date" class="floating-label">Tarih</label>
+                  <label for="date" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">Tarih</label>
                 </div>
               </div>
 
@@ -186,7 +187,7 @@
                     formControlName="time"
                     class="peer block"
                   />
-                  <label for="time" class="floating-label">Saat</label>
+                  <label for="time" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">Saat</label>
                 </div>
               </div>
 
@@ -199,7 +200,7 @@
                     class="peer block"
                     placeholder=" "
                   />
-                  <label for="location" class="floating-label">Mekan</label>
+                  <label for="location" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">Mekan</label>
                 </div>
               </div>
 
@@ -215,7 +216,7 @@
                     <option value="ankara">Ankara</option>
                     <option value="izmir">İzmir</option>
                   </select>
-                  <label for="city" class="floating-label">Şehir</label>
+                  <label for="city" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">Şehir</label>
                 </div>
               </div>
 
@@ -228,7 +229,7 @@
                     class="peer block"
                     placeholder=" "
                   />
-                  <label for="capacity" class="floating-label">Kapasite</label>
+                  <label for="capacity" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">Kapasite</label>
                 </div>
               </div>
 
@@ -241,7 +242,7 @@
                     class="peer block"
                     placeholder=" "
                   />
-                  <label for="price" class="floating-label">Bilet Fiyatı (₺)</label>
+                  <label for="price" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">Bilet Fiyatı (₺)</label>
                 </div>
               </div>
 
@@ -254,7 +255,7 @@
                     class="peer block"
                     placeholder=" "
                   ></textarea>
-                  <label for="description" class="floating-label">Etkinlik Açıklaması</label>
+                  <label for="description" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-95 transform bg-background px-2 text-sm text-muted-foreground duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-95 peer-focus:px-2 peer-focus:text-primary">Etkinlik Açıklaması</label>
                 </div>
               </div>
             </div>
@@ -285,7 +286,7 @@
           <div class="flex justify-end gap-4">
             <button
               type="button"
-              routerLink="/anasayfa/etkinlik-olustur"
+              [routerLink]="['/etkinlik-olustur']"
               class="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               İptal

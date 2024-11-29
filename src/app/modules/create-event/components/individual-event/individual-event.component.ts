@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { SidebarComponent } from '../../../layout/components/sidebar/sidebar.component';
 import { NavbarComponent } from '../../../layout/components/navbar/navbar.component';
 import { ButtonComponent } from 'src/app/shared/components/button/button.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-individual-event',
@@ -13,7 +14,8 @@ import { ButtonComponent } from 'src/app/shared/components/button/button.compone
     ReactiveFormsModule,
     SidebarComponent,
     NavbarComponent,
-    ButtonComponent
+    ButtonComponent,
+    RouterLink
   ],
   templateUrl: './individual-event.component.html'
 })
