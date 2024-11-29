@@ -35,15 +35,17 @@
     </div>
 
     <!-- Kategori Butonları -->
-    <div class="flex justify-center gap-4 mb-4 p-4 overflow-x-auto scroll-smooth whitespace-nowrap hide-scrollbar">
-      <div (click)="goToCategory('konser')" 
-           class="flex items-center gap-3 px-6 py-3 w-40 bg-card border border-border rounded-full cursor-pointer 
-                  transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:scale-105 hover:shadow-lg group">
-        <img src="assets/icons/heroicons/outline/music-note.svg" 
-             alt="Konser Icon" 
-             class="w-5 h-5 text-muted-foreground transition-colors duration-300 group-hover:text-primary [filter:invert(65%)_sepia(59%)_saturate(5017%)_hue-rotate(308deg)_brightness(101%)_contrast(97%)]" />
-        <span class="font-medium text-muted-foreground transition-colors duration-300 group-hover:text-primary">Konser</span>
-      </div>
+   <div class="flex lg:justify-center gap-4 mb-4 p-4 overflow-x-auto whitespace-nowrap hide-scrollbar">
+  <!-- Konser Butonu -->
+  <div 
+    (click)="goToCategory('konser')" 
+    class="flex items-center gap-3 px-6 py-3 w-40 bg-card border border-border rounded-full cursor-pointer 
+           transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:scale-105 hover:shadow-lg group flex-shrink-0">
+    <img src="assets/icons/heroicons/outline/music-note.svg" 
+         alt="Konser Icon" 
+         class="w-5 h-5 text-muted-foreground transition-colors duration-300 group-hover:text-primary [filter:invert(65%)_sepia(59%)_saturate(5017%)_hue-rotate(308deg)_brightness(101%)_contrast(97%)]" />
+    <span class="font-medium text-muted-foreground transition-colors duration-300 group-hover:text-primary">Konser</span>
+  </div>
 
       <div (click)="goToCategory('tiyatro')" 
            class="flex items-center gap-3 px-6 py-3 w-40 bg-card border border-border rounded-full cursor-pointer 
