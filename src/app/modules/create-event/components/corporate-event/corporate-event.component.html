@@ -1,4 +1,8 @@
 <div class="flex h-screen w-full overflow-hidden bg-background">
+  <app-sidebar></app-sidebar>
+  <div class="flex grow flex-col content-start mt-0 overflow-hidden bg-background p-4 md:p-6">
+    <app-navbar></app-navbar>
+<div class="flex h-screen w-full overflow-hidden bg-background">
  
   <div class="flex grow flex-col content-start overflow-hidden bg-background p-4 md:p-6">
  
@@ -12,7 +16,7 @@
           class="text-muted-foreground hover:text-foreground transition-colors">
           <img src="assets/icons/heroicons/outline/arrow-left.svg" class="w-5 h-5" alt="Back" />
         </a>
-        <h2 class="text-2xl font-semibold text-foreground">Kurumsal Etkinlik Oluştur<span class="text-primary">.</span></h2>
+        <h2 class="text-2xl font-semibold text-foreground">Kurumsal Etkinlik Oluştur<span class="text-primary"></span></h2>
       </div>
 
         <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="space-y-6">
